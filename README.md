@@ -64,3 +64,11 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+###Sepolia 
+In the terminal of the project directory, paste this:
+$ set -a
+$ source .env
+$ set +a
+
+Change the .env file accordingly
+
