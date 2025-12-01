@@ -64,7 +64,7 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
-###Sepolia 
+### Sepolia 
 In the terminal of the project directory, paste this:
 $ set -a
 $ source .env
