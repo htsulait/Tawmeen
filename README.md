@@ -10,7 +10,7 @@ Tamween Chain improves **traceability, recall management, and consumer trust** b
 
 Tamween Chain was designed to address a practical problem in regulated food distribution: when consumers and stakeholders cannot easily verify the origin, status, or safety of subsidized food products, rumors and uncertainty spread quickly. In a system as sensitive as Tamween, that can reduce public trust and make product recalls harder to manage.
 
-This project uses **smart contracts** to create a tamper-evident record of product batches, lifecycle updates, and change notices. Consumers, retailers, suppliers, and regulators each interact with the system in different ways, while the **Ministry of Commerce & Industry (MOCI)** acts as the primary regulator/operator.
+This project uses smart contracts to create a tamper-evident record of product batches, lifecycle updates, and change notices. Consumers, retailers, suppliers, and regulators each interact with the system in different ways, while the Ministry of Commerce & Industry (MOCI) acts as the primary regulator/operator.
 
 ---
 
