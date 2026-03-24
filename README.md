@@ -1,74 +1,126 @@
-## Foundry
+# Tamween Chain
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A blockchain-based supply chain transparency platform for Qatar’s **Tamween** food subsidy program.
 
-Foundry consists of:
+Tamween Chain improves **traceability, recall management, and consumer trust** by recording key supply-chain events on-chain and anchoring off-chain batch data for auditability.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+---
 
-## Documentation
+## Overview
 
-https://book.getfoundry.sh/
+Tamween Chain was designed to address a practical problem in regulated food distribution: when consumers and stakeholders cannot easily verify the origin, status, or safety of subsidized food products, rumors and uncertainty spread quickly. In a system as sensitive as Tamween, that can reduce public trust and make product recalls harder to manage.
 
-## Usage
+This project uses **smart contracts** to create a tamper-evident record of product batches, lifecycle updates, and change notices. Consumers, retailers, suppliers, and regulators each interact with the system in different ways, while the **Ministry of Commerce & Industry (MOCI)** acts as the primary regulator/operator.
 
-### Build
+---
 
-```shell
-$ forge build
-```
+## Problem Statement
 
-### Test
+Tamween products move through multiple actors before reaching consumers. Without a trustworthy and transparent system:
 
-```shell
-$ forge test
-```
+- consumers may not know whether a batch is safe or recalled
+- regulators may struggle to track changes quickly
+- retailers may lack reliable recall visibility
+- public confidence can be damaged by misinformation
 
-### Format
+Tamween Chain helps solve this by making batch history and recall status easier to verify.
 
-```shell
-$ forge fmt
-```
+---
 
-### Gas Snapshots
+## Key Features
 
-```shell
-$ forge snapshot
-```
+- **Batch Registration**
+  - Register product batches with metadata references and content hashes
 
-### Anvil
+- **Lifecycle Tracking**
+  - Track batches through states such as:
+    - Registered
+    - In Transit
+    - In Storage
+    - For Sale
+    - Sold
+    - Recalled
+    - Expired
 
-```shell
-$ anvil
-```
+- **Recall Management**
+  - Regulators or operators can mark unsafe batches as recalled
 
-### Deploy
+- **Change Notice Workflow**
+  - Submit, approve, reject, supersede, and close notices related to batch updates
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+- **Merkle Anchoring**
+  - Store Merkle roots on-chain for integrity verification of off-chain batch data
 
-### Cast
+- **Role-Based Access Control**
+  - Restrict sensitive operations to authorized actors such as owner, operator, regulator, supplier, or retailer
 
-```shell
-$ cast <subcommand>
-```
+- **Consumer Verification**
+  - Consumers can verify whether a batch is valid, safe, or recalled through the frontend or QR-based flow
 
-### Help
+---
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
-### Sepolia 
-In the terminal of the project directory, paste this:
-$ set -a
-$ source .env
-$ set +a
+## Smart Contract Architecture
 
-Change the .env file accordingly
+The system is built around three core contracts:
 
+### `BatchRegistry.sol`
+
+Responsible for:
+
+- creating batches
+- storing metadata references
+- tracking lifecycle state transitions
+- handling recalls
+- preventing invalid state changes
+
+### `ChangeNotice.sol`
+
+Responsible for:
+
+- managing notice workflows
+- handling approvals and rejections
+- linking authorized updates to regulated processes
+- connecting batch changes to Merkle proof validation
+
+### `MerkleAnchor.sol`
+
+Responsible for:
+
+- storing approved Merkle roots for batches
+- verifying whether off-chain data matches the anchored root
+- supporting tamper-evident document integrity
+
+---
+
+## Roles in the System
+
+- **MOCI / Owner / Regulator**
+  - Oversees the system, manages permissions, and approves sensitive actions
+
+- **Operator**
+  - Executes core administrative batch actions
+
+- **Supplier**
+  - Submits product and shipment-related information
+
+- **Retailer**
+  - Updates downstream status and interacts with recall flows
+
+- **Auditor**
+  - Reviews records for compliance and authenticity
+
+- **Consumer**
+  - Checks product safety and traceability status
+
+---
+
+## Tech Stack
+
+- **Solidity**
+- **Foundry**
+- **Sepolia Testnet**
+- **Next.js**
+- **MetaMask**
+- **Anvil**
+
+---
