@@ -124,3 +124,148 @@ Responsible for:
 - **Anvil**
 
 ---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+- Foundry
+- Git
+- A wallet private key for testnet deployment
+- A Sepolia RPC endpoint
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/tamween-chain.git
+cd tamween-chain
+forge install
+```
+### Build
+
+```bash
+forge build
+```
+
+### Run Tests
+
+```bash
+forge test -vv
+```
+
+### Generate Gas Snapshot
+
+```bash
+forge snapshot
+```
+
+### Local Development
+
+Start a local Anvil node:
+```bash
+anvil
+```
+
+Then deploy locally
+```bash
+forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast
+```
+### Deploy to Sepolia
+
+Set your environment variables:
+```bash
+export PRIVATE_KEY=your_private_key
+export SEPOLIA_RPC_URL=your_rpc_url
+export ETHERSCAN_API_KEY=your_api_key
+```
+Deploy:
+
+```bash
+forge script script/Deploy.s.sol:Deploy --rpc-url $SEPOLIA_RPC_URL --broadcast --verify
+```
+
+---
+## Testing Focus
+
+This project includes testing for:
+
+- authorized vs unauthorized access  
+- valid and invalid batch creation  
+- lifecycle progression rules  
+- recall behavior  
+- Merkle root submission and verification  
+- change notice approval and rejection flows  
+- negative tests using revert expectations  
+
+Example Foundry helper:
+
+```bash
+vm.expectRevert();
+```
+
+---
+
+## Security Considerations
+
+The project follows several secure development practices:
+
+- Role-based access control  
+- Checks-Effects-Interactions mindset  
+- Input validation  
+- Terminal state protection  
+- Hash-based integrity checks  
+- Off-chain / on-chain separation for sensitive or bulky data  
+
+Important notes:
+
+- on-chain integrity does not automatically guarantee off-chain input truthfulness  
+- permissioned actors must still be trusted and managed carefully  
+- key compromise remains an operational risk  
+
+---
+
+## Gas and Audit Readiness
+
+For beta and audit work, the project can include:
+
+- gas snapshots for hotspot identification  
+- before and after gas optimization comparisons  
+- Slither-based static analysis summaries  
+- accepted-risk notes for documented trade-offs  
+- repeatable, idempotent deployment scripts  
+- basic UI polish for loading, empty, and error states  
+
+---
+
+## Project Goal
+
+The goal of Tamween Chain is not just to store data on a blockchain.  
+
+It is to create a practical trust layer for a regulated food supply system where transparency, accountability, and auditability matter.  
+
+---
+
+## Future Improvements
+
+- improved frontend QR scanning  
+- better dashboards for regulators and retailers  
+- expanded Slither-based security review  
+- gas optimization of hotspot functions  
+- reproducible deployment artifacts and runbooks  
+- more polished UI states for loading, empty, and error cases  
+
+---
+
+## Academic Note
+
+This repository represents a prototype or MVP built for coursework and demonstration purposes.  
+
+It is intended to show the feasibility of blockchain-assisted traceability for Tamween, not to serve as a production-ready government system without further review, testing, and policy integration.  
+
+---
+
+## License
+
+This project is for academic and educational use unless otherwise specified.
